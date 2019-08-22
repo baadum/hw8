@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // У вас несортированный массив есть массив с уведомлениями. Вам нужно написать функцию,
+        // которая отсортирует и оптимизирует представление для вывода уведомлений и 
+        // создаст новый массив, где сообщения будут сгруппированы по времени получения
+
+    var notification = [
+        {
+            date: '29/07/2019',
+            msg: 'Some message here'
+        },
+        {
+            date: '30/07/2019',
+            msg: 'Some message'
+        },
+        {
+            date: '29/07/2019',
+            msg: 'Message here'
+        },
+        {
+            date: '01/08/2019',
+            msg: 'Some message here too'
+        },
+        {
+            date: '31/07/2019',
+            msg: 'New message here'
+        },
+
+    ];
+
+    // function group(array) {
+    //     return array.reduce(function(acum,item) {
+    //         if (!acum.length || acum[acum.length - 1].title !== item.date) {
+    //             var allMsg = [];
+    //             allMsg.push(item.msg);
+                
+    //             acum.push({
+    //                 title: item.date,
+    //                 items: allMsg
+    //             });
+            
+    //         } else {
+    //             acum[acum.length - 1].items.push(item.msg);
+    //         }
+    //         return acum;
+    //     }, []);
+    // }
+    
+    // console.log(group(notification));
+        
+    function group(array) {
+        return array.sort(function(a,b){
+            if ( a.date < b.date ){
+    return -1;
+  }
+  if ( a.date > b.date ){
+    return 1;
+  }
+  return 0; 
+        }).reverse();
+    }
+  
+    // function group(array) {
+    //     return array.sort(function(a,b){
+    //         var dateA=new Date(a.date), dateB=new Date(b.date)
+    //         return dateA-dateB   
+    //     });
+    // }
+
+//     function group(array) {
+//         return array.sort(function(a,b) { 
+//             var dateA = new Date(a.date).getTime();
+//     var dateB = new Date(b.date).getTime();
+//     return dateA > dateB ? 1 : -1;  
+// });
+//     }
+
+
+    console.log(group(notification));
+
+    </script>
+</body>
+</html>
